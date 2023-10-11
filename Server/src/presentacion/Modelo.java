@@ -1,5 +1,8 @@
 package presentacion;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import logica.Servidor;
 import logica.Movimientos;
 
@@ -71,7 +74,6 @@ public class Modelo {
                 posicionesPosibles += "" + (y - 1) + (x - 1) + "_";
             }
         } catch (Exception ex) {
-            System.err.println("ERRORSAZO");
         }
 
         String[] arrayPosicionesPosibles = posicionesPosibles.split("_");
@@ -94,7 +96,6 @@ public class Modelo {
                 posicionesPosibles += "" + (y + 1) + (x - 1) + "_";
             }
         } catch (Exception ex) {
-            System.err.println("ERRORSAZO");
         }
 
         String[] arrayPosicionesPosibles = posicionesPosibles.split("_");
@@ -111,7 +112,6 @@ public class Modelo {
                 posicionesPosibles += "" + (y - 2) + "" + (x - 1) + "_";
             }
         } catch (Exception e) {
-            System.err.println("Error Caballo");
         }
         try {
             //Arriba Derecha
@@ -119,7 +119,6 @@ public class Modelo {
                 posicionesPosibles += "" + (y - 2) + "" + (x + 1) + "_";
             }
         } catch (Exception e) {
-            System.err.println("Error Caballo");
         }
         try {
             // Abajo Izquierda
@@ -127,7 +126,6 @@ public class Modelo {
                 posicionesPosibles += "" + (y + 2) + "" + (x - 1) + "_";
             }
         } catch (Exception e) {
-            System.err.println("Error Caballo");
         }
         try {
             // Abajo Derecha
@@ -135,7 +133,7 @@ public class Modelo {
                 posicionesPosibles += "" + (y + 2) + "" + (x + 1) + "_";
             }
         } catch (Exception e) {
-            System.err.println("Error Caballo");
+
         }
         try {
             // Izquierda Arriba
@@ -143,7 +141,6 @@ public class Modelo {
                 posicionesPosibles += "" + (y - 1) + "" + (x - 2) + "_";
             }
         } catch (Exception e) {
-            System.err.println("Error Caballo");
         }
         try {
             // Izquierda Abajo
@@ -151,7 +148,6 @@ public class Modelo {
                 posicionesPosibles += "" + (y + 1) + "" + (x - 2) + "_";
             }
         } catch (Exception e) {
-            System.err.println("Error Caballo");
         }
         try {
             //  Derecha Arriba
@@ -159,7 +155,6 @@ public class Modelo {
                 posicionesPosibles += "" + (y - 1) + "" + (x + 2) + "_";
             }
         } catch (Exception e) {
-            System.err.println("Error Caballo");
         }
         try {
             // Derecha Abajo
@@ -167,7 +162,6 @@ public class Modelo {
                 posicionesPosibles += "" + (y + 1) + "" + (x + 2) + "_";
             }
         } catch (Exception e) {
-            System.err.println("Error Caballo");
         }
 
         String[] arrayPosicionesPosibles = posicionesPosibles.split("_");
@@ -182,7 +176,6 @@ public class Modelo {
                 posicionesPosibles += "" + (y - 2) + "" + (x - 1) + "_";
             }
         } catch (Exception e) {
-            System.err.println("Error Caballo");
         }
         try {
             //Arriba Derecha
@@ -190,7 +183,6 @@ public class Modelo {
                 posicionesPosibles += "" + (y - 2) + "" + (x + 1) + "_";
             }
         } catch (Exception e) {
-            System.err.println("Error Caballo");
         }
         try {
             // Abajo Izquierda
@@ -198,7 +190,6 @@ public class Modelo {
                 posicionesPosibles += "" + (y + 2) + "" + (x - 1) + "_";
             }
         } catch (Exception e) {
-            System.err.println("Error Caballo");
         }
         try {
             // Abajo Derecha
@@ -206,7 +197,6 @@ public class Modelo {
                 posicionesPosibles += "" + (y + 2) + "" + (x + 1) + "_";
             }
         } catch (Exception e) {
-            System.err.println("Error Caballo");
         }
         try {
             // Izquierda Arriba
@@ -214,7 +204,6 @@ public class Modelo {
                 posicionesPosibles += "" + (y - 1) + "" + (x - 2) + "_";
             }
         } catch (Exception e) {
-            System.err.println("Error Caballo");
         }
         try {
             // Izquierda Abajo
@@ -222,7 +211,6 @@ public class Modelo {
                 posicionesPosibles += "" + (y + 1) + "" + (x - 2) + "_";
             }
         } catch (Exception e) {
-            System.err.println("Error Caballo");
         }
         try {
             //  Derecha Arriba
@@ -230,7 +218,6 @@ public class Modelo {
                 posicionesPosibles += "" + (y - 1) + "" + (x + 2) + "_";
             }
         } catch (Exception e) {
-            System.err.println("Error Caballo");
         }
         try {
             // Derecha Abajo
@@ -238,7 +225,6 @@ public class Modelo {
                 posicionesPosibles += "" + (y + 1) + "" + (x + 2) + "_";
             }
         } catch (Exception e) {
-            System.err.println("Error Caballo");
         }
 
         String[] arrayPosicionesPosibles = posicionesPosibles.split("_");
@@ -797,7 +783,11 @@ public class Modelo {
 
     public void iniciar() {
         getAppServidor().activar(true);
-        // getAppServidor().escucharClientes();
+        try {
+            getAppServidor().escucharClientes();
+        } catch (IOException ex) {
+            Logger.getLogger(Modelo.class.getName()).log(Level.SEVERE, null, ex);
+        }
         getAppServidor().activar(false);
     }
 }

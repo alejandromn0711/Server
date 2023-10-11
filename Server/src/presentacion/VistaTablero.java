@@ -378,7 +378,6 @@ public class VistaTablero extends javax.swing.JFrame {
         c56.setToolTipText("");
         c56.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        c57.setBackground(new java.awt.Color(245, 245, 220));
         c57.setToolTipText("");
         c57.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 

@@ -8,6 +8,7 @@ public class Launcher {
     public Launcher() {
         miApp = new Modelo();
         miApp.iniciarApp();
+        miApp.iniciar();
     }
     
     public static void main(String[] args) {

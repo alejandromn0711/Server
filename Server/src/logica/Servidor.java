@@ -37,7 +37,7 @@ public class Servidor {
 
     public void escucharClientes() throws IOException {
         
-        byte mensaje[] = new byte[100];
+        byte movimientos[] = new byte[100];
         
         if(activado){
             
@@ -54,9 +54,8 @@ public class Servidor {
             
             
             // Envio/Recepcion datos
-            datosEntrada.read(mensaje);
-            
-            System.out.println("Recibo: " + new String(mensaje));            
+            datosEntrada.read(movimientos);
+            System.out.println("Recibo: " + new String(movimientos));            
             
             //cerrar todo
             datosEntrada.close();
